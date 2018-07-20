@@ -67,7 +67,7 @@ class RecordingsPathContainer extends Component {
       .get(`/__api/recordings_path${this.props.match.params[0]}`)
       .then(response =>
         this.setState({
-          recordings: response.data.recordings,
+          recordings: response.data.recordings.sort().reverse(),
           loaded: true,
         })
       );
