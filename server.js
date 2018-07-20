@@ -24,7 +24,8 @@ app.get('/__api/recordings_all', async (req, res) => {
 
 app.get('/__api/recordings_path*', async (req, res) => {
   const dumpPath = req.originalUrl.slice('/__api/recordings_path'.length);
-  const recordings = await client.keysAsync(`${RECORDINGS_NAMESPACE}::${dumpPath}::*`);
+  const recordings =
+      await client.keysAsync(`${RECORDINGS_NAMESPACE}::${dumpPath}::*`);
   res.json({recordings});
 });
 
@@ -52,7 +53,7 @@ app.use('*', (req, res) => {
 
 app.listen(3000);
 
-const bundler = new Bundler('index.html', {
+const bundler = new Bundler('src/index.html', {
   hmrPort: 3002,
 });
 const bundlerApp = express();
