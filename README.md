@@ -1,6 +1,6 @@
 # cassette
 
-Recorde HTTP requests. Requires redis server to be running.
+Record and display HTTP requests. Requires redis server to be running.
 
 - `yarn`
 - `yarn start`
