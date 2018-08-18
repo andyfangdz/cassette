@@ -43,14 +43,20 @@ class RecordingContainer extends Component {
   }
 }
 
-const RecordingsPathPage = ({ recordings }) => (
-  <ul>
-    {recordings.map(r => (
-      <li key={r}>
-        <Link to={`/recordings/${r}`}>{r}</Link>
-      </li>
-    ))}
-  </ul>
+const RecordingsPathPage = ({ recordings, path }) => (
+  <div>
+    <h2>
+      <code>{path}</code>
+    </h2>
+    <h3>{recordings.length} recordings</h3>
+    <ul>
+      {recordings.map(r => (
+        <li key={r}>
+          <Link to={`/recordings/${r}`}>{r}</Link>
+        </li>
+      ))}
+    </ul>
+  </div>
 );
 
 class RecordingsPathContainer extends Component {
@@ -75,7 +81,10 @@ class RecordingsPathContainer extends Component {
 
   render() {
     return this.state.loaded ? (
-      <RecordingsPathPage recordings={this.state.recordings} />
+      <RecordingsPathPage
+        recordings={this.state.recordings}
+        path={this.props.match.params[0]}
+      />
     ) : null;
   }
 }
